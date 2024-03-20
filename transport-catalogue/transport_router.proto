@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+
+import "graph.proto";
+
+
+package transport_catalogue_serialize;
+
+
+message RouteInternalData {
+    Weight weight = 1;
+    uint32 prev_edge = 2;
+	bool has_prev_edge = 3;
+};
+
+message RouteInternalDataOptional {
+	RouteInternalData route_iternal_data = 1;
+}
+
+
+message RouteInternalDataList {
+	repeated RouteInternalDataOptional route_iternal_data_opt = 1;
+}
+
+message StopNameToId {
+	string stop_name = 1;
+	uint32 id = 2;
+}
+
+
+message Router {
+	repeated StopNameToId stop_name_to_id = 1;
+
+	Graph graph = 2;
+	repeated RouteInternalDataList routes_internal_data = 3;
+}

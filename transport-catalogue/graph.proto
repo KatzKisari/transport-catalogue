@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package transport_catalogue_serialize;
+
+
+message Weight {
+    uint32 type = 1;
+    double weight = 2;
+    string name = 3;
+    uint32 span_count = 4;
+}
+
+message Edge {
+    uint32 from = 1;
+    uint32 to = 2;
+    Weight weight = 3;
+}
+
+message IncidenceList {
+    repeated uint32 incidence = 1;
+}
+
+message Graph {
+    repeated Edge edges = 1;
+    repeated IncidenceList incidence_lists = 2;
+}
